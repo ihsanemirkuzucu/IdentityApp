@@ -1,0 +1,36 @@
+﻿@model ResetPasswordViewModel
+@{
+    ViewData["Title"] = "ResetPasword";
+}
+
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<div class="row">
+    <div class="col-md-5 offset-md-4 my-5">
+        <div class="alert alert-info text-center">Şifre yenileme linki e-posta adresinize gönderilecektir</div>
+        @if (TempData["SuccessMessage"] is not null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="Email" class="form-label" asp-for="Email"></label>
+                <input class="form-control" asp-for="Email">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="row text-center">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary w-50">Gönder</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
